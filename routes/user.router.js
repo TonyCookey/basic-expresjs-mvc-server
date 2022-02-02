@@ -10,7 +10,9 @@ userRouter.use((req, res, next) => {
 })
 
 userRouter.get('/', userController.getAllUsers)
+userRouter.get('/profile', userController.getProfilePicture)
 userRouter.get('/:id', userController.getUser)
 userRouter.post('/', userController.createUser)
+
 
 module.exports = userRouter

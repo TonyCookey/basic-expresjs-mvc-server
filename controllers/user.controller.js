@@ -1,3 +1,4 @@
+const path = require('path')
 const users = require('../models/user.model')
 
 function createUser(req, res) {
@@ -31,7 +32,10 @@ function getUser(req, res) {
         })
     }
 }
+function getProfilePicture(req, res) {
+    res.sendFile(path.join(__dirname, '..', 'public', 'profile.jpg'))
+}
 
 module.exports = {
-    getUser, createUser, getAllUsers
+    getUser, createUser, getAllUsers, getProfilePicture
 }
