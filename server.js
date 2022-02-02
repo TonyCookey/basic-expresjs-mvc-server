@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 app.use(express.json())
 
 
-// routes
+// Routes
 app.get('/', (req, res) => {
     res.send('Hello world')
 })
