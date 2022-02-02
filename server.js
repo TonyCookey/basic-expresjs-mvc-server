@@ -25,11 +25,12 @@ app.use('/', (req, res) => {
     res.render('index', {
         title: 'NFT Store',
         heading: 'NFT Marketplace',
-        caption: 'Get your all your NFTs in one place '
+        caption: 'Get your all your NFTs, coins and tokens in one place '
     })
 })
 // user routes - userRouter
 app.use('/users', userRouter)
+
 
 
 // start the express server
