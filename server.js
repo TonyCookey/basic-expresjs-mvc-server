@@ -5,7 +5,8 @@ const PORT = 3000
 const userRouter = require('./routes/user.router')
 const logMiddleware = require('./middlewares/log.middleware')
 
-// middlewares
+
+// logging middleware
 app.use(logMiddleware)
 
 // json parsing middleware
@@ -13,8 +14,9 @@ app.use(express.json())
 
 // Routes
 app.get('/', (req, res) => {
-    res.send('Hello world from Express App')
+    res.send('Hello from ExpressJS App')
 })
+// user routes - userRouter
 app.use('/users', userRouter)
 
 
