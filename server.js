@@ -4,17 +4,6 @@ const userController = require('./controllers/user.controller')
 const app = express()
 const PORT = 3000
 
-const users = [
-    {
-        id: 1,
-        name: 'Tony Cookey'
-    },
-    {
-        id: 2,
-        name: 'Anthony Cookey'
-    }
-]
-
 // middlewares
 app.use((req, res, next) => {
     const start = Date.now()

@@ -1,3 +1,4 @@
+const users = require('../models/user.model')
 
 function createUser(req, res) {
     if (!req.body.name) {
