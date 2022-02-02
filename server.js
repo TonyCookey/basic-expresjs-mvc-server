@@ -1,6 +1,11 @@
 const express = require('express')
-const app = express()
+const path = require('path')
 const PORT = 3000
+
+const app = express()
+app.set('view engine', 'hbs')
+app.set('views', path.join(__dirname, 'views'))
+
 
 const userRouter = require('./routes/user.router')
 const logMiddleware = require('./middlewares/log.middleware')
@@ -12,9 +17,16 @@ app.use(logMiddleware)
 // json parsing middleware
 app.use(express.json())
 
+// serving static files in the public folder
+app.use('/site', express.static(path.join(__dirname, 'public')))
+
 // Routes
-app.get('/', (req, res) => {
-    res.send('Hello from ExpressJS App')
+app.use('/', (req, res) => {
+    res.render('index', {
+        title: 'NFT Store',
+        heading: 'NFT Marketplace',
+        caption: 'Get your all your NFTs in one place '
+    })
 })
 // user routes - userRouter
 app.use('/users', userRouter)

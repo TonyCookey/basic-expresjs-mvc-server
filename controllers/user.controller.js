@@ -33,7 +33,7 @@ function getUser(req, res) {
     }
 }
 function getProfilePicture(req, res) {
-    res.sendFile(path.join(__dirname, '..', 'public', 'profile.jpg'))
+    res.sendFile(path.join(__dirname, '..', 'public', 'img', 'profile.jpg'))
 }
 
 module.exports = {
