@@ -1,37 +1,21 @@
 const express = require('express')
-
-const userController = require('./controllers/user.controller')
 const app = express()
 const PORT = 3000
 
-// middlewares
-app.use((req, res, next) => {
-    const start = Date.now()
-    next()
-    const delta = Date.now() - start
-    console.log(`${req.method}: ${req.url} , ${delta}ms`);
-})
+const userRouter = require('./routes/user.router')
+const logMiddleware = require('./middlewares/log.middleware')
 
-app.use((req, res, next) => {
-    const start = Date.now()
-    next()
-    const delta = Date.now() - start
-    console.log(`${req.method}: ${req.url} , ${delta}ms`);
-})
+// middlewares
+app.use(logMiddleware)
 
 // json parsing middleware
 app.use(express.json())
 
-
 // Routes
 app.get('/', (req, res) => {
-    res.send('Hello world')
+    res.send('Hello world from Express App')
 })
-
-app.get('/users', userController.getAllUsers)
-app.get('/user/:id', userController.getUser)
-app.post('/users', userController.createUser)
-
+app.use('/users', userRouter)
 
 
 // start the express server
